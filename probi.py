@@ -7,21 +7,37 @@
 # except ValueError:
 #     print("Invalid input, try again!")
 
-import json
+# import json
+#
+# with open("questions.json", "r") as file:
+#     content = file.read()
+# tocen_odgovor = 0
+# netocen_odgovor = 0
+# data = json.loads(content)
+# for question in data:
+#     print(question['question_text'])
+#     for index, ponudeni_odgovori in enumerate(question['ponudeni_odgovori']):
+#         print(int(index)+1, "-", ponudeni_odgovori)
+#     odgovor = input("Vnesi go odgovorot: ")
+#     if int(odgovor) == question['tocen_odgovor']:
+#         tocen_odgovor = tocen_odgovor+1
+#     else:
+#         netocen_odgovor = netocen_odgovor+1
+#     print("Tocni odgovori: ", str(tocen_odgovor), "/", len(data))
+#     print("Netocni odgovori: ", str(netocen_odgovor), "/", len(data))
 
-with open("questions.json", "r") as file:
-    content = file.read()
-tocen_odgovor = 0
-netocen_odgovor = 0
-data = json.loads(content)
-for question in data:
-    print(question['question_text'])
-    for index, ponudeni_odgovori in enumerate(question['ponudeni_odgovori']):
-        print(int(index)+1, "-", ponudeni_odgovori)
-    odgovor = input("Vnesi go odgovorot: ")
-    if int(odgovor) == question['tocen_odgovor']:
-        tocen_odgovor = tocen_odgovor+1
-    else:
-        netocen_odgovor = netocen_odgovor+1
-    print("Tocni odgovori: ", str(tocen_odgovor), "/", len(data))
-    print("Netocni odgovori: ", str(netocen_odgovor), "/", len(data))
+import PySimpleGUI as sg
+
+source_files_label = sg.Text('Select files to compres:')
+source_button = sg.FileBrowse('Choose')
+source_text_box = sg.InputText()
+
+destination_files_label = sg.Text('Select destination folder:')
+destination_button = sg.FileBrowse('Choose')
+destination_text_box = sg.InputText()
+compress_button = sg.Button('Compress')
+window = sg.Window("Compression program",[[source_files_label,source_text_box,source_button],
+                                          [destination_files_label,destination_text_box,destination_button],
+                                          [compress_button]])
+window.read()
+window.close()
