@@ -36,8 +36,23 @@ destination_files_label = sg.Text('Select destination folder:')
 destination_button = sg.FileBrowse('Choose')
 destination_text_box = sg.InputText()
 compress_button = sg.Button('Compress')
-window = sg.Window("Compression program",[[source_files_label,source_text_box,source_button],
-                                          [destination_files_label,destination_text_box,destination_button],
-                                          [compress_button]])
+
+feet_label = sg.Text("Enter feet: ")
+feet_text_box = sg.InputText()
+
+inches_label = sg.Text("Enter inches")
+inches_text_box = sg.InputText()
+
+convert_button = sg.Button("Convert")
+
+# window = sg.Window("Compression program",[[source_files_label,source_text_box,source_button],
+#                                           [destination_files_label,destination_text_box,destination_button],
+#                                           [compress_button]])
+
+
+window = sg.Window("Convertor",[[feet_label,feet_text_box],
+                                          [inches_label,inches_text_box],
+                                          [convert_button]])
+
 window.read()
 window.close()
